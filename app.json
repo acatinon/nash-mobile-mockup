@@ -1,0 +1,12 @@
+{
+  "name": "nash-mobile-mockup",
+  "displayName": "nash-mobile-mockup",
+  "expo": {
+    "name": "nash-mobile-mockup",
+    "slug": "nash-mobile-mockup",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
