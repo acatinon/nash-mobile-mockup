@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
 
 import { coins } from '../models/coins';
+import theme from '../theme';
 
 const CoinItem = ({ item }) => (
   <View>
@@ -18,7 +19,7 @@ const Wallet = () => {
   return (
     <SafeAreaView style={styles.root}>
       <View style={styles.summary}>
-        <Text>$14,569.02</Text>
+        <Text style={theme.jumbo}>$14,569.02</Text>
       </View>
       <View  style={styles.assets}>
         <Text>Assets</Text>
