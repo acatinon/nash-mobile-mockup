@@ -20,6 +20,10 @@ const baseStyles = {
   },
   mutedInverted: {
     color: colors.mutedInverted
+  },
+  stacked: {
+    position: 'absolute',
+    width: '100%',
   }
 }
 
