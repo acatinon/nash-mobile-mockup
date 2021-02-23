@@ -23,7 +23,10 @@ const Wallet = () => {
   return (
     <SafeAreaView style={styles.root}>
       <View style={styles.summary}>
-        <Text style={styles.jumbo}>$ 14,569.62</Text>
+        <Text style={[styles.title, styles.text]}>Wallet</Text>
+        <Card backgroundColor='#0052f3'>
+          <Text style={styles.jumbo}>$ 14,569.62</Text>
+        </Card>
       </View>
       <View style={styles.assets}>
         <Text style={[styles.title, styles.text]}>Assets</Text>
@@ -43,17 +46,18 @@ const styles = createStyles({
     backgroundColor: '#fff',
   },
   jumbo: {
-    fontSize: fonts.lg,
+    color: colors.inverted,
+    fontSize: fonts.xl,
     fontFamily: fonts.bold,
+    textAlign: 'center',
+    margin: padding.xl,
   },
   summary: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     margin: padding.sm
   },
   assets: {
     flex: 1,
+    flexGrow: 1,
     margin: padding.sm
   },
   coin: {
