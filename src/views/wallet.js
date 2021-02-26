@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, View, FlatList, Text, Image } from 'react-native';
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import Card from './components/card';
@@ -7,6 +7,7 @@ import Card from './components/card';
 import { coins } from '../models/coins';
 import { colors, fonts, padding } from '../styles/theme';
 import createStyles from '../styles/base';
+import WalletBackground from "../assets/wallet_bg.svg";
 
 const statsActive = Array.from({ length: 10 }, () => parseFloat((Math.random() * 0.8 + 0.2).toFixed(3)));
 const BASE_SIZE = 16;
@@ -41,8 +42,13 @@ const Wallet = () => {
     <SafeAreaView style={styles.root}>
       <View style={styles.summary}>
         <Text style={[styles.title, styles.text]}>Wallet</Text>
-        <Card backgroundColor='#0052f3'>
-          <Text style={[styles.jumbo, styles.stacked]}>$ 14,569.62</Text>
+        <Card>
+          <View style={styles.stacked}>
+            <WalletBackground width="100%" height="100%" />
+          </View>
+          <View style={styles.stacked}>
+            <Text style={[styles.jumbo]}>$ 14,569.62</Text>
+          </View>
           <AreaChart
             yMin={0}
             yMax={Math.max(...statsActive) + 1}
@@ -91,7 +97,11 @@ const styles = createStyles({
   },
   coin: {
     marginHorizontal: padding.sm
-  }
+  },
+  image: {
+    flex: 1,
+    height: null
+  },
 });
 
 
