@@ -38,14 +38,15 @@ const Wallet = () => {
     <CoinItem item={item} />
   );
 
+  const renderWalletBackground = () => (
+    <WalletBackground width="100%" height="100%" />
+  );
+
   return (
     <SafeAreaView style={styles.root}>
       <View style={styles.summary}>
         <Text style={[styles.title, styles.text]}>Wallet</Text>
-        <Card>
-          <View style={styles.stacked}>
-            <WalletBackground width="100%" height="100%" />
-          </View>
+        <Card renderBackground={renderWalletBackground}>
           <View style={styles.stacked}>
             <Text style={[styles.jumbo]}>$ 14,569.62</Text>
           </View>
