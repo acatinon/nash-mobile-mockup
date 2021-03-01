@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, Text, Image } from 'react-native';
+import { View, FlatList, Image } from 'react-native';
+import { Header, Text, Icon } from 'react-native-elements';
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import Card from './components/card';
@@ -43,43 +44,41 @@ const Wallet = () => {
   );
 
   return (
-    <SafeAreaView style={styles.root}>
-      <View style={styles.summary}>
-        <Text style={[styles.title, styles.text]}>Wallet</Text>
-        <Card renderBackground={renderWalletBackground}>
-          <View style={styles.stacked}>
-            <Text style={[styles.jumbo]}>$ 14,569.62</Text>
-          </View>
-          <AreaChart
-            yMin={0}
-            yMax={Math.max(...statsActive) + 1}
-            data={statsActive}
-            curve={shape.curveNatural}
-            style={{ height: BASE_SIZE * 10 }}
-            contentInset={{
-              bottom: -BASE_SIZE * 0.21, right: -BASE_SIZE * 0.21, left: -BASE_SIZE * 0.21,
-            }}
-            svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: '#fff' }}
-          >
-          </AreaChart>
-        </Card>
-      </View>
-      <View style={styles.assets}>
-        <Text style={[styles.title, styles.text]}>Assets</Text>
-        <FlatList
-          data={coins}
-          renderItem={renderItem}
-          keyExtractor={item => item.symbol}
-        />
-      </View>
-    </SafeAreaView>
+    <View style={styles.root}>
+      <Header placement="left">
+        <Icon type="material-icons" name='menu' />
+        <Text style={{ fontSize: 18 }}>Wallet</Text>
+        <Icon type="font-awesome-5" name='user-circle' color='#000' />
+      </Header>
+      <Card renderBackground={renderWalletBackground}>
+        <View style={styles.stacked}>
+          <Text style={[styles.jumbo]}>$ 14,569.62</Text>
+        </View>
+        <AreaChart
+          yMin={0}
+          yMax={Math.max(...statsActive) + 1}
+          data={statsActive}
+          curve={shape.curveNatural}
+          style={{ height: BASE_SIZE * 10 }}
+          contentInset={{
+            bottom: -BASE_SIZE * 0.21, right: -BASE_SIZE * 0.21, left: -BASE_SIZE * 0.21,
+          }}
+          svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: '#fff' }}
+        >
+        </AreaChart>
+      </Card>
+      <Text>Assets</Text>
+      <FlatList
+        data={coins}
+        renderItem={renderItem}
+        keyExtractor={item => item.symbol}
+      />
+    </View>
   );
 };
 
 const styles = createStyles({
   root: {
-    flex: 1,
-    backgroundColor: '#fff',
   },
   jumbo: {
     color: colors.inverted,
