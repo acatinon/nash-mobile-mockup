@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, FlatList, Image } from 'react-native';
-import { Header, Card, Text, Icon } from 'react-native-elements';
+import { Header, Card, Text, Button, Icon } from 'react-native-elements';
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import CardCust from './components/card';
 import Title from './components/title';
+import IconButton from './components/icon_button';
 
 import { coins } from '../models/coins';
 import { colors, fonts, padding } from '../styles/theme';
@@ -52,15 +53,21 @@ const Wallet = () => {
         <Icon type="font-awesome-5" name='user-circle' color='#000' />
       </Header>
       <CardCust renderBackground={renderWalletBackground}>
-        <View style={styles.stacked}>
-          <Text style={[styles.jumbo]}>$ 14,569.62</Text>
+        <View>
+          <Text style={styles.jumbo}>$ 14,569.62</Text>
+          <View style={styles.actions}>
+            <IconButton title="Deposit" name='arrow-down' />
+            <IconButton title="Send" name='arrow-up' />
+            <IconButton title="Buy" name='dollar-sign' />
+            <IconButton title="Earn" name='chart-pie' />
+          </View>
         </View>
         <AreaChart
           yMin={0}
           yMax={Math.max(...statsActive) + 1}
           data={statsActive}
           curve={shape.curveNatural}
-          style={{ height: BASE_SIZE * 10 }}
+          style={[styles.stacked, { height: BASE_SIZE * 10 }]}
           contentInset={{
             bottom: -BASE_SIZE * 0.21, right: -BASE_SIZE * 0.21, left: -BASE_SIZE * 0.21,
           }}
@@ -88,8 +95,10 @@ const styles = createStyles({
     textAlign: 'center',
     marginVertical: padding.lg,
   },
-  summary: {
-    margin: padding.sm
+  actions: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
   },
   assets: {
     flex: 1,
