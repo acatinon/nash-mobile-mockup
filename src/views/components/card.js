@@ -6,7 +6,6 @@ import { padding } from '../../styles/theme';
 import createStyles from '../../styles/base';
 
 export default function CustCard(props) {
-
   return (
     <Card containerStyle={{ backgroundColor: props.backgroundColor }}>
       <LinearGradient
@@ -22,7 +21,6 @@ export default function CustCard(props) {
         </View>
       </LinearGradient>
     </Card>
-
   );
 };
 

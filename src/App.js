@@ -8,6 +8,7 @@ import {
   Roboto_700Bold
 } from '@expo-google-fonts/roboto';
 import { Wallet } from "./views/wallet";
+import { fonts } from './styles/theme';
 
 const theme = {
   Header: {
@@ -22,8 +23,18 @@ const theme = {
       padding: 0,
       border: 0,
       borderRadius: 8
+    },
+  },
+  Text: {
+    h4Style: {
+      fontSize: 18
     }
-  }
+  },
+  CardFeaturedTitle: {
+    style: {
+      marginBottom: 0,
+    }
+  },
 };
 
 export default function App() {

@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, FlatList, Image } from 'react-native';
-import { Header, Text, Icon } from 'react-native-elements';
+import { Header, Card, Text, Icon } from 'react-native-elements';
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
-import Card from './components/card';
+import CardCust from './components/card';
+import Title from './components/title';
 
 import { coins } from '../models/coins';
 import { colors, fonts, padding } from '../styles/theme';
@@ -14,10 +15,10 @@ const statsActive = Array.from({ length: 10 }, () => parseFloat((Math.random() *
 const BASE_SIZE = 16;
 
 const CoinItem = ({ item }) => (
-  <Card backgroundColor={colors[item.symbol.toLowerCase()]}>
+  <CardCust backgroundColor={colors[item.symbol.toLowerCase()]}>
     <View style={[styles.coin, styles.stacked]}>
-      <Text style={[styles.title, styles.inverted]}>{item.name}</Text>
-      <Text style={[styles.sub, styles.mutedInverted]}>$ {item.price}</Text>
+      <Card.FeaturedTitle>{item.name}</Card.FeaturedTitle>
+      <Card.FeaturedSubtitle>$ {item.price}</Card.FeaturedSubtitle>
     </View>
     <AreaChart
       yMin={0}
@@ -31,7 +32,7 @@ const CoinItem = ({ item }) => (
       svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: '#fff8' }}
     >
     </AreaChart>
-  </Card>
+  </CardCust>
 );
 
 const Wallet = () => {
@@ -47,10 +48,10 @@ const Wallet = () => {
     <View style={styles.root}>
       <Header placement="left">
         <Icon type="material-icons" name='menu' />
-        <Text style={{ fontSize: 18 }}>Wallet</Text>
+        <Text h4>Wallet</Text>
         <Icon type="font-awesome-5" name='user-circle' color='#000' />
       </Header>
-      <Card renderBackground={renderWalletBackground}>
+      <CardCust renderBackground={renderWalletBackground}>
         <View style={styles.stacked}>
           <Text style={[styles.jumbo]}>$ 14,569.62</Text>
         </View>
@@ -66,8 +67,8 @@ const Wallet = () => {
           svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: '#fff' }}
         >
         </AreaChart>
-      </Card>
-      <Text>Assets</Text>
+      </CardCust>
+      <Title>Assets</Title>
       <FlatList
         data={coins}
         renderItem={renderItem}
