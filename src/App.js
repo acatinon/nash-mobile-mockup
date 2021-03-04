@@ -7,7 +7,7 @@ import {
   Roboto_400Regular,
   Roboto_700Bold
 } from '@expo-google-fonts/roboto';
-import { Wallet } from "./views/wallet";
+import Wallet from "./views/wallet";
 import { fonts } from './styles/theme';
 
 const theme = {
@@ -48,7 +48,7 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme} useDark={false}>
           <Wallet />
         </ThemeProvider>
       </SafeAreaProvider>

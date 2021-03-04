@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, Image } from 'react-native';
-import { Header, Card, Text, Button, Icon } from 'react-native-elements';
+import { Header, Card, Text, Button, Icon, withTheme } from 'react-native-elements';
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import CardCust from './components/card';
@@ -36,7 +36,9 @@ const CoinItem = ({ item }) => (
   </CardCust>
 );
 
-const Wallet = () => {
+const Wallet = (props) => {
+  const { theme, updateTheme, replaceTheme } = props;
+
   const renderItem = ({ item }) => (
     <CoinItem item={item} />
   );
@@ -46,7 +48,7 @@ const Wallet = () => {
   );
 
   return (
-    <View style={styles.root}>
+    <View style={{backgroundColor: theme.colors.white }}>
       <Header placement="left">
         <Icon type="material-icons" name='menu' />
         <Text h4>Wallet</Text>
@@ -54,7 +56,7 @@ const Wallet = () => {
       </Header>
       <CardCust renderBackground={renderWalletBackground}>
         <View>
-          <Text style={styles.jumbo}>$ 14,569.62</Text>
+          <Card.FeaturedTitle style={styles.jumbo}>$ 14,569.62</Card.FeaturedTitle>
           <View style={styles.actions}>
             <IconButton title="Deposit" name='arrow-down' />
             <IconButton title="Send" name='arrow-up' />
@@ -86,10 +88,7 @@ const Wallet = () => {
 };
 
 const styles = createStyles({
-  root: {
-  },
   jumbo: {
-    color: colors.inverted,
     fontSize: fonts.xl,
     fontFamily: fonts.bold,
     textAlign: 'center',
@@ -115,4 +114,4 @@ const styles = createStyles({
 });
 
 
-export { Wallet };
+export default withTheme(Wallet);

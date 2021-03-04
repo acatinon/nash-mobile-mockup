@@ -1,8 +1,4 @@
 export const colors  = {
-  text: '#444',
-  inverted: '#fff',
-  muted: '#444a',
-  mutedInverted: '#fffa',
   btc: '#f2a900',
   eth: '#748db9',
   neo: '#00af92',
