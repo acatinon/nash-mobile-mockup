@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'react-native-elements';
 import AppLoading from 'expo-app-loading';
@@ -55,7 +56,9 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <ThemeProvider theme={theme} useDark={false}>
-          <Wallet />
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <Wallet />
+          </ScrollView>
         </ThemeProvider>
       </SafeAreaProvider>
     );
