@@ -11,12 +11,18 @@ import Wallet from "./views/wallet";
 import { fonts } from './styles/theme';
 
 const theme = {
+  colors: {
+    primary: '#0052f3',
+  },
   Header: {
     centerContainerStyle: {
       flexDirection: 'row',
       alignItems: 'center',
     },
     backgroundColor: '#fff0',
+    containerStyle: {
+      borderBottom: 0
+    }
   },
   Card: {
     containerStyle: {

@@ -6,6 +6,7 @@ import * as shape from 'd3-shape';
 import CardCust from './components/card';
 import Title from './components/title';
 import IconButton from './components/icon_button';
+import MarginView from './components/margin_view';
 
 import { coins } from '../models/coins';
 import { colors, fonts, padding } from '../styles/theme';
@@ -15,26 +16,30 @@ import WalletBackground from "../assets/wallet_bg.svg";
 const statsActive = Array.from({ length: 10 }, () => parseFloat((Math.random() * 0.8 + 0.2).toFixed(3)));
 const BASE_SIZE = 16;
 
-const CoinItem = ({ item }) => (
-  <CardCust backgroundColor={colors[item.symbol.toLowerCase()]}>
-    <View style={[styles.coin, styles.stacked]}>
-      <Card.FeaturedTitle>{item.name}</Card.FeaturedTitle>
-      <Card.FeaturedSubtitle>$ {item.price}</Card.FeaturedSubtitle>
-    </View>
-    <AreaChart
-      yMin={0}
-      yMax={Math.max(...item.chart) + 1}
-      data={item.chart}
-      curve={shape.curveNatural}
-      style={{ height: BASE_SIZE * 5 }}
-      contentInset={{
-        bottom: -BASE_SIZE * 0.21, right: -BASE_SIZE * 0.21, left: -BASE_SIZE * 0.21,
-      }}
-      svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: '#fff8' }}
-    >
-    </AreaChart>
-  </CardCust>
-);
+const CoinItem = withTheme((props) => {
+  const { item, theme, updateTheme, replaceTheme } = props;
+
+  return (
+    <CardCust backgroundColor={colors[item.symbol.toLowerCase()]}>
+      <View style={[styles.coin, styles.stacked]}>
+        <Card.FeaturedTitle>{item.name}</Card.FeaturedTitle>
+        <Card.FeaturedSubtitle>$ {item.price}</Card.FeaturedSubtitle>
+      </View>
+      <AreaChart
+        yMin={0}
+        yMax={Math.max(...item.chart) + 1}
+        data={item.chart}
+        curve={shape.curveNatural}
+        style={{ height: BASE_SIZE * 5 }}
+        contentInset={{
+          bottom: -BASE_SIZE * 0.21, right: -BASE_SIZE * 0.21, left: -BASE_SIZE * 0.21,
+        }}
+        svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: theme.colors.white, opacity: 0.5 }}
+      >
+      </AreaChart>
+    </CardCust>
+  )
+});
 
 const Wallet = (props) => {
   const { theme, updateTheme, replaceTheme } = props;
@@ -48,35 +53,35 @@ const Wallet = (props) => {
   );
 
   return (
-    <View style={{backgroundColor: theme.colors.white }}>
+    <View style={{ backgroundColor: theme.colors.white }}>
       <Header placement="left">
         <Icon type="material-icons" name='menu' />
         <Text h4>Wallet</Text>
-        <Icon type="font-awesome-5" name='user-circle' color='#000' />
+        <Icon type="font-awesome-5" name='user-circle' color={theme.colors.black} />
       </Header>
       <CardCust renderBackground={renderWalletBackground}>
-        <View>
+        <View style={styles.stacked}>
           <Card.FeaturedTitle style={styles.jumbo}>$ 14,569.62</Card.FeaturedTitle>
-          <View style={styles.actions}>
-            <IconButton title="Deposit" name='arrow-down' />
-            <IconButton title="Send" name='arrow-up' />
-            <IconButton title="Buy" name='dollar-sign' />
-            <IconButton title="Earn" name='chart-pie' />
-          </View>
         </View>
         <AreaChart
           yMin={0}
           yMax={Math.max(...statsActive) + 1}
           data={statsActive}
           curve={shape.curveNatural}
-          style={[styles.stacked, { height: BASE_SIZE * 10 }]}
+          style={[{ height: BASE_SIZE * 10 }]}
           contentInset={{
             bottom: -BASE_SIZE * 0.21, right: -BASE_SIZE * 0.21, left: -BASE_SIZE * 0.21,
           }}
-          svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: '#fff' }}
+          svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: theme.colors.white, opacity: 0.5 }}
         >
         </AreaChart>
       </CardCust>
+      <MarginView style={styles.actions}>
+        <IconButton title="Deposit" name='arrow-down' iconBackgoundColor={theme.colors.primary} />
+        <IconButton title="Send" name='arrow-up' iconBackgoundColor={theme.colors.primary} />
+        <IconButton title="Buy" name='dollar-sign' iconBackgoundColor={theme.colors.primary} />
+        <IconButton title="Earn" name='chart-pie' iconBackgoundColor={theme.colors.primary} />
+      </MarginView>
       <Title>Assets</Title>
       <FlatList
         data={coins}
