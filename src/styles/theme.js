@@ -18,6 +18,4 @@ export const fonts = {
   md: 14,
   lg: 20,
   xl: 28,
-  regular: 'Roboto_400Regular',
-  bold: 'Roboto_700Bold'
 }

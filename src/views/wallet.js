@@ -8,7 +8,7 @@ import Title from './components/title';
 import IconButton from './components/icon_button';
 import MarginView from './components/margin_view';
 
-import { coins } from '../models/coins';
+import { wallet } from '../models/wallet';
 import { colors, fonts, padding } from '../styles/theme';
 import createStyles from '../styles/base';
 import WalletBackground from "../assets/wallet_bg.svg";
@@ -21,9 +21,13 @@ const CoinItem = withTheme((props) => {
 
   return (
     <CardCust backgroundColor={colors[item.symbol.toLowerCase()]}>
-      <View style={[styles.coin, styles.stacked]}>
-        <Card.FeaturedTitle>{item.name}</Card.FeaturedTitle>
-        <Card.FeaturedSubtitle>$ {item.price}</Card.FeaturedSubtitle>
+      <View style={[styles.stacked]}>
+        <Text style={[styles.coinItem, {fontSize: fonts.md, fontWeight: 'bold'}]}>{item.name}</Text>
+        <Text style={[styles.coinItem, {fontSize: fonts.md, opacity: 0.7}]}>$ {item.price}</Text>
+      </View>
+      <View style={[styles.coinWallet, styles.stacked]}>
+        <Text style={[styles.coinItem, {fontSize: fonts.md, fontWeight: 'bold'}]}>{item.amount} {item.symbol}</Text>
+        <Text style={[styles.coinItem, {fontSize: fonts.md, opacity: 0.7}]}>$ {item.amountInDollar}</Text>
       </View>
       <AreaChart
         yMin={0}
@@ -61,7 +65,7 @@ const Wallet = (props) => {
       </Header>
       <CardCust renderBackground={renderWalletBackground}>
         <View style={styles.stacked}>
-          <Card.FeaturedTitle style={styles.jumbo}>$ 14,569.62</Card.FeaturedTitle>
+          <Card.FeaturedTitle style={styles.jumbo}>$ {wallet.amount}</Card.FeaturedTitle>
         </View>
         <AreaChart
           yMin={0}
@@ -84,7 +88,7 @@ const Wallet = (props) => {
       </MarginView>
       <Title>Assets</Title>
       <FlatList
-        data={coins}
+        data={wallet.assets}
         renderItem={renderItem}
         keyExtractor={item => item.symbol}
       />
@@ -109,8 +113,12 @@ const styles = createStyles({
     flexGrow: 1,
     margin: padding.sm
   },
-  coin: {
-    marginHorizontal: padding.sm
+  coinItem: {
+    color: '#fff',
+    marginHorizontal: padding.sm,
+  },
+  coinWallet: {
+    alignItems: 'flex-end'
   },
   image: {
     flex: 1,

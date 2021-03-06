@@ -9,7 +9,7 @@ import {
   Roboto_700Bold
 } from '@expo-google-fonts/roboto';
 import Wallet from "./views/wallet";
-import { fonts } from './styles/theme';
+import { padding } from './styles/theme';
 
 const theme = {
   colors: {
@@ -35,11 +35,6 @@ const theme = {
   Text: {
     h4Style: {
       fontSize: 18
-    }
-  },
-  CardFeaturedTitle: {
-    style: {
-      marginBottom: 0,
     }
   },
 };
