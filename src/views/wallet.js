@@ -11,7 +11,7 @@ import MarginView from './components/margin_view';
 import { wallet } from '../models/wallet';
 import { colors, fonts, padding } from '../styles/theme';
 import createStyles from '../styles/base';
-import WalletBackground from "../assets/wallet_bg.svg";
+import NashBackground from "./components/nash_background";
 
 const statsActive = Array.from({ length: 10 }, () => parseFloat((Math.random() * 0.8 + 0.2).toFixed(3)));
 const BASE_SIZE = 16;
@@ -53,7 +53,7 @@ const Wallet = (props) => {
   );
 
   const renderWalletBackground = () => (
-    <WalletBackground width="100%" height="100%" />
+    <NashBackground style={{width: '100%', height: '100%'}} />
   );
 
   return (
