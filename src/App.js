@@ -1,7 +1,8 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'react-native-elements';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import {
   useFonts,
@@ -39,6 +40,8 @@ const theme = {
   },
 };
 
+const Drawer = createDrawerNavigator();
+
 export default function App() {
   let [fontsLoaded] = useFonts({
     Roboto_400Regular,
@@ -51,9 +54,11 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <ThemeProvider theme={theme} useDark={false}>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <Wallet />
-          </ScrollView>
+          <NavigationContainer>
+            <Drawer.Navigator initialRouteName="Wallet">
+              <Drawer.Screen name="Wallet" component={Wallet} />
+            </Drawer.Navigator>
+          </NavigationContainer>
         </ThemeProvider>
       </SafeAreaProvider>
     );

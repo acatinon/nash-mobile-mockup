@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Image } from 'react-native';
+import { View, FlatList, ScrollView } from 'react-native';
 import { Header, Card, Text, Button, Icon, withTheme } from 'react-native-elements';
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
@@ -22,12 +22,12 @@ const CoinItem = withTheme((props) => {
   return (
     <CardCust backgroundColor={colors[item.symbol.toLowerCase()]}>
       <View style={[styles.stacked]}>
-        <Text style={[styles.coinItem, {fontSize: fonts.md, fontWeight: 'bold'}]}>{item.name}</Text>
-        <Text style={[styles.coinItem, {fontSize: fonts.md, opacity: 0.7}]}>$ {item.price}</Text>
+        <Text style={[styles.coinItem, { fontSize: fonts.md, fontWeight: 'bold' }]}>{item.name}</Text>
+        <Text style={[styles.coinItem, { fontSize: fonts.md, opacity: 0.7 }]}>$ {item.price}</Text>
       </View>
       <View style={[styles.coinWallet, styles.stacked]}>
-        <Text style={[styles.coinItem, {fontSize: fonts.md, fontWeight: 'bold'}]}>{item.amount} {item.symbol}</Text>
-        <Text style={[styles.coinItem, {fontSize: fonts.md, opacity: 0.7}]}>$ {item.amountInDollar}</Text>
+        <Text style={[styles.coinItem, { fontSize: fonts.md, fontWeight: 'bold' }]}>{item.amount} {item.symbol}</Text>
+        <Text style={[styles.coinItem, { fontSize: fonts.md, opacity: 0.7 }]}>$ {item.amountInDollar}</Text>
       </View>
       <AreaChart
         yMin={0}
@@ -53,12 +53,12 @@ const Wallet = (props) => {
   );
 
   const renderWalletBackground = () => (
-    <NashBackground style={{width: '100%', height: '100%'}} />
+    <NashBackground style={{ width: '100%', height: '100%' }} />
   );
 
   return (
-    <View style={{ backgroundColor: theme.colors.white }}>
-      <Header placement="left">
+    <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: theme.colors.white }}>
+      <Header placement="left" barStyle="dark-content">
         <Icon type="material-icons" name='menu' />
         <Text h4>Wallet</Text>
         <Icon type="font-awesome-5" name='user-circle' color={theme.colors.black} />
@@ -92,7 +92,7 @@ const Wallet = (props) => {
         renderItem={renderItem}
         keyExtractor={item => item.symbol}
       />
-    </View>
+    </ScrollView>
   );
 };
 
