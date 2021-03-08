@@ -22,6 +22,13 @@ export default function NashBackground(props) {
           <G transform="scale(1.5, 1.5)">
             <Path opacity="0.9" d="M-255.025 57.6215C-257.591 166.659 40.5898 228.927 110.763 29.3558C180.937 -170.215 -46.1415 -302.962 -67.9084 -177.793C-101.857 17.4218 -252.46 -51.4157 -255.025 57.6215Z" fill="url(#paint1_linear)" />
           </G>
+          <Defs>
+            <LinearGradient id="paint1_linear" x1="-372.831" y1="99.5858" x2="-351.169" y2="-223.186" gradientUnits="userSpaceOnUse">
+              <Stop stopColor="#FE46B9" />
+              <Stop offset="0.0101009" stopColor="#F752CD" />
+              <Stop offset="1" stopColor="#825BFA" />
+            </LinearGradient>
+          </Defs>
         </Svg>
 
         {/* cyan blob */}
@@ -29,6 +36,12 @@ export default function NashBackground(props) {
           <G transform="scale(1.2, 1.2) translate(-270 -30)">
             <Path d="M1548.75 -87.7808C1425.85 -55.0201 1547.7 96.342 1336.19 188.173C1200.58 247.053 1417.13 467.346 1623.04 333.38C1828.95 199.414 1671.65 -120.542 1548.75 -87.7808Z" fill="url(#paint0_linear)" />
           </G>
+          <Defs>
+            <LinearGradient id="paint0_linear" x1="1812.37" y1="110.688" x2="1502.15" y2="431.924" gradientUnits="userSpaceOnUse">
+              <Stop stopColor="#270AFF" />
+              <Stop offset="1" stopColor="#02E4CE" />
+            </LinearGradient>
+          </Defs>
         </Svg>
 
         {/* top right transparent blob */}
@@ -45,17 +58,6 @@ export default function NashBackground(props) {
           </G>
         </Svg>
       </G>
-      <Defs>
-        <LinearGradient id="paint0_linear" x1="1812.37" y1="110.688" x2="1502.15" y2="431.924" gradientUnits="userSpaceOnUse">
-          <Stop stop-color="#270AFF" />
-          <Stop offset="1" stop-color="#02E4CE" />
-        </LinearGradient>
-        <LinearGradient id="paint1_linear" x1="-372.831" y1="99.5858" x2="-351.169" y2="-223.186" gradientUnits="userSpaceOnUse">
-          <Stop stop-color="#FE46B9" />
-          <Stop offset="0.0101009" stop-color="#F752CD" />
-          <Stop offset="1" stop-color="#825BFA" />
-        </LinearGradient>
-      </Defs>
     </Svg>
 
   );
