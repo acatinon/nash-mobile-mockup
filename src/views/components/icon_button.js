@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Button, Icon } from 'react-native-elements';
-import { withTheme } from 'react-native-elements';
+import { Button, Icon, withTheme } from 'react-native-elements';
 
 const IconButton = (props) => {
   const { theme, updateTheme, replaceTheme } = props;

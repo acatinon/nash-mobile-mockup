@@ -7,6 +7,7 @@ import CardCust from './components/card';
 import Title from './components/title';
 import IconButton from './components/icon_button';
 import MarginView from './components/margin_view';
+import Pill from './components/pill';
 
 import { wallet } from '../models/wallet';
 import { colors, fonts, padding } from '../styles/theme';
@@ -23,11 +24,11 @@ const CoinItem = withTheme((props) => {
     <CardCust backgroundColor={colors[item.symbol.toLowerCase()]}>
       <View style={[styles.stacked]}>
         <Text style={[styles.coinItem, { fontSize: fonts.md, fontWeight: 'bold' }]}>{item.name}</Text>
-        <Text style={[styles.coinItem, { fontSize: fonts.md, opacity: 0.7 }]}>$ {item.price}</Text>
+        <Text style={[styles.coinItem, { fontSize: fonts.md, opacity: 0.7 }]}>${item.price}</Text>
       </View>
       <View style={[styles.coinWallet, styles.stacked]}>
         <Text style={[styles.coinItem, { fontSize: fonts.md, fontWeight: 'bold' }]}>{item.amount} {item.symbol}</Text>
-        <Text style={[styles.coinItem, { fontSize: fonts.md, opacity: 0.7 }]}>$ {item.amountInDollar}</Text>
+        <Text style={[styles.coinItem, { fontSize: fonts.md, opacity: 0.7 }]}>${item.amountInDollar}</Text>
       </View>
       <AreaChart
         yMin={0}
@@ -64,8 +65,15 @@ const Wallet = (props) => {
         <Icon type="font-awesome-5" name='user-circle' color={theme.colors.black} />
       </Header>
       <CardCust renderBackground={renderWalletBackground}>
-        <View style={styles.stacked}>
-          <Card.FeaturedTitle style={styles.jumbo}>$ {wallet.amount}</Card.FeaturedTitle>
+        <View style={[styles.stacked, { alignItems: 'center' }]}>
+          <Card.FeaturedTitle style={styles.jumbo}>${wallet.amount}</Card.FeaturedTitle>
+          <Pill>
+            <Icon type="font-awesome-5" name='arrow-up' color={theme.colors.primary} size={14} />
+            <Text> </Text>
+            <Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>${wallet.last24hdelta}</Text>
+            <Text> </Text>
+            <Text style={{ color: theme.colors.primary, opacity: 0.7 }}>{wallet.last24hdeltaPercentage}%</Text>
+          </Pill>
         </View>
         <AreaChart
           yMin={0}
@@ -101,7 +109,8 @@ const styles = createStyles({
     fontSize: fonts.xl,
     fontFamily: fonts.bold,
     textAlign: 'center',
-    marginVertical: padding.lg,
+    marginTop: padding.md,
+    marginBottom: 0
   },
   actions: {
     flex: 1,

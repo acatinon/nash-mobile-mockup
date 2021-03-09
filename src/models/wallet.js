@@ -20,7 +20,7 @@ const assets = [
 const wallet = {
     amount: "310,297.57",
     last24hdelta: "5,527.70",
-    last24hdeltaPercentage: "1.78",
+    last24hdeltaPercentage: "+1.78",
     assets: assets
 }
 
