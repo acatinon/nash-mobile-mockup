@@ -9,8 +9,8 @@ import {
   Roboto_400Regular,
   Roboto_700Bold
 } from '@expo-google-fonts/roboto';
-import Wallet from "./views/wallet";
-import { padding } from './styles/theme';
+import Wallet from "./src/views/wallet";
+import { padding } from './src/styles/theme';
 
 const theme = {
   colors: {
