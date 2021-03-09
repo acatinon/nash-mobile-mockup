@@ -4,11 +4,6 @@ import { ThemeProvider } from 'react-native-elements';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
-import {
-  useFonts,
-  Roboto_400Regular,
-  Roboto_700Bold
-} from '@expo-google-fonts/roboto';
 import Wallet from "./src/views/wallet";
 import { padding } from './src/styles/theme';
 
@@ -43,24 +38,15 @@ const theme = {
 const Drawer = createDrawerNavigator();
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    Roboto_400Regular,
-    Roboto_700Bold,
-  });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
-    return (
-      <SafeAreaProvider>
-        <ThemeProvider theme={theme} useDark={false}>
-          <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Wallet">
-              <Drawer.Screen name="Wallet" component={Wallet} />
-            </Drawer.Navigator>
-          </NavigationContainer>
-        </ThemeProvider>
-      </SafeAreaProvider>
-    );
-  }
+  return (
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme} useDark={false}>
+        <NavigationContainer>
+          <Drawer.Navigator initialRouteName="Wallet">
+            <Drawer.Screen name="Wallet" component={Wallet} />
+          </Drawer.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
+    </SafeAreaProvider>
+  );
 }
