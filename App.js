@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'react-native-elements';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { DrawerContentScrollView, DrawerItemList, DrawerItem, DrawerToggleButton, createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import Wallet from "./src/views/wallet";
@@ -37,12 +37,20 @@ const theme = {
 
 const Drawer = createDrawerNavigator();
 
+function DrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+    </DrawerContentScrollView>
+  );
+}
+
 export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme} useDark={false}>
         <NavigationContainer>
-          <Drawer.Navigator initialRouteName="Wallet">
+          <Drawer.Navigator initialRouteName="Wallet" drawerContent={DrawerContent}>
             <Drawer.Screen name="Wallet" component={Wallet} />
           </Drawer.Navigator>
         </NavigationContainer>

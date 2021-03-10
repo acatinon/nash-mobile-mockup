@@ -47,7 +47,7 @@ const CoinItem = withTheme((props) => {
 });
 
 const Wallet = (props) => {
-  const { theme, updateTheme, replaceTheme } = props;
+  const { theme, navigation } = props;
 
   const renderItem = ({ item }) => (
     <CoinItem item={item} />
@@ -60,9 +60,9 @@ const Wallet = (props) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: theme.colors.white }}>
       <Header placement="left" barStyle="dark-content">
-        <Icon type="material-icons" name='menu' />
+        <Icon type="material-icons" name="menu" onPress={() => navigation.openDrawer()} />
         <Text h4>Wallet</Text>
-        <Icon type="font-awesome-5" name='user-circle' color={theme.colors.black} />
+        <Icon type="font-awesome-5" name="user-circle" color={theme.colors.black} />
       </Header>
       <CardCust renderBackground={renderWalletBackground}>
         <View style={[styles.stacked, { alignItems: 'center' }]}>
