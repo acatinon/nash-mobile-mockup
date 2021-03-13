@@ -67,8 +67,8 @@ const Wallet = (props) => {
       <Card renderBackground={renderWalletBackground}>
         <View style={[styles.stacked, { alignItems: 'center' }]}>
           <ElementsCard.FeaturedTitle style={styles.jumbo}>${wallet.amount}</ElementsCard.FeaturedTitle>
-          <Pill>
-            <Icon type="font-awesome-5" name='arrow-up' color={theme.colors.primary} size={14} />
+          <Pill backgroundColor="#fff8">
+            <Icon type="font-awesome-5" name='arrow-up' color={theme.colors.primary} size={14} style={{marginTop: 2}} />
             <Text> </Text>
             <Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>${wallet.last24hdelta}</Text>
             <Text> </Text>
@@ -89,10 +89,10 @@ const Wallet = (props) => {
         </AreaChart>
       </Card>
       <MarginView style={styles.actions}>
-        <IconButton title="Deposit" name='arrow-down' iconBackgoundColor={theme.colors.primary} />
-        <IconButton title="Send" name='arrow-up' iconBackgoundColor={theme.colors.primary} />
-        <IconButton title="Buy" name='dollar-sign' iconBackgoundColor={theme.colors.primary} />
-        <IconButton title="Earn" name='chart-pie' iconBackgoundColor={theme.colors.primary} />
+        <IconButton title="Deposit" name='arrow-down' iconBackgoundColor={theme.colors.primary} iconColor={colors.white} />
+        <IconButton title="Send" name='arrow-up' iconBackgoundColor={theme.colors.primary} iconColor={colors.white} />
+        <IconButton title="Buy" name='dollar-sign' iconBackgoundColor={theme.colors.primary} iconColor={colors.white} />
+        <IconButton title="Earn" name='chart-pie' iconBackgoundColor={theme.colors.primary} iconColor={colors.white} />
       </MarginView>
       <Title>Assets</Title>
       <FlatList

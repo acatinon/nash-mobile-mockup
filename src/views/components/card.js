@@ -12,7 +12,7 @@ const Card = (props) => {
     <ElementsCard containerStyle={{ backgroundColor: props.backgroundColor }}>
       <LinearGradient
         colors={[theme.colors.cardGradientA, theme.colors.cardGradientB]}
-        start={{x:0.1, y:0}}>
+        start={{x:1, y:0}}>
         {props.renderBackground && 
         <View style={styles.fullSizeStacked}>
             {props.renderBackground()}

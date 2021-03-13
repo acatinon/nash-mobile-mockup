@@ -18,8 +18,8 @@ const lightColors = {
 
 const darkcolors = {
   colors: {
-    white: '#080808',
-    black: '#f2f2f2',
+    white: '#111111',
+    black: '#eeeeee',
     grey5: '#393e42',
     grey4: '#43484d',
     grey3: '#5e6977',
@@ -43,7 +43,7 @@ const themeOverrides = {
     },
     backgroundColor: 'transparent',
     containerStyle: {
-      borderBottom: 0
+      borderBottomWidth: 0
     }
   },
   Card: {

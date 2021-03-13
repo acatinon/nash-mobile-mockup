@@ -6,7 +6,7 @@ const Pill = (props) => {
     const { theme, updateTheme, replaceTheme } = props;
 
   return (
-    <View style={{ flexDirection: 'row', backgroundColor: theme.colors.white, opacity: 0.6, borderRadius: 8, paddingHorizontal: 4, paddingTop: 2 }}>
+    <View style={{ flexDirection: 'row', backgroundColor: props.backgroundColor || theme.colors.white, borderRadius: 8, paddingHorizontal: 4 }}>
       {props.children}
     </View>
   );
