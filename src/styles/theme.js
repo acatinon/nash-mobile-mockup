@@ -1,9 +1,76 @@
+import deepmerge from 'deepmerge';
+
+const lightColors = {
+  colors: {
+    white: '#ffffff',
+    black: '#242424',
+    grey0: '#393e42',
+    grey1: '#43484d',
+    grey2: '#5e6977',
+    grey3: '#86939e',
+    grey4: '#bdc6cf',
+    grey5: '#e1e8ee',
+
+    cardGradient: ['#fff4', '#fff0'],
+  }
+};
+
+const darkcolors = {
+  colors: {
+    white: '#080808',
+    black: '#f2f2f2',
+    grey5: '#393e42',
+    grey4: '#43484d',
+    grey3: '#5e6977',
+    grey2: '#86939e',
+    grey1: '#bdc6cf',
+    grey0: '#e1e8ee',
+
+    cardGradient: ['08080844', '08080800'],
+  }
+};
+
+const themeOverrides = {
+  colors: {
+    primary: '#0052f3',
+  },
+  Header: {
+    centerContainerStyle: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    backgroundColor: 'transparent',
+    containerStyle: {
+      borderBottom: 0
+    }
+  },
+  Card: {
+    containerStyle: {
+      padding: 0,
+      border: 0,
+      borderRadius: 8
+    },
+  },
+  Text: {
+    h4Style: {
+      fontSize: 18
+    }
+  },
+};
+
+export const lightTheme = deepmerge(themeOverrides, lightColors);
+
+export const darkTheme = deepmerge(themeOverrides, darkcolors);
+
 export const colors  = {
-  btc: '#f2a900',
-  eth: '#748db9',
-  neo: '#00af92',
-  nex: '#3076FF',
-  aave: '#b6509e',
+  white: '#fff',
+  black: '#444',
+  
+  btc: 'hsl(42, 100%, 47%)',
+  eth: '#hsl(218, 33%, 59%)',
+  neo: '#hsl(170, 100%, 34%)',
+  nex: '#hsl(220, 100%, 59%)',
+  aave: '#hsl(314, 41%, 51%)',
 }
 
 export const padding = {

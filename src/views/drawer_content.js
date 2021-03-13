@@ -30,7 +30,7 @@ function ContentComponent(props) {
         <Switch
           style={{
           }}
-          value={ThemeState.themeMode === 'dark'}
+          value={ThemeState.mode === 'dark'}
           onValueChange={(val) => {
             if (val === true) {
               dispatch({ type: 'set-theme', payload: 'dark' });

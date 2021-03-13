@@ -6,35 +6,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import Wallet from "./src/views/wallet";
 import DrawerContent from "./src/views/drawer_content";
 import { ThemeReducer, ThemeReducerContext, initialState } from './src/helpers/theme_reducer';
-import { padding } from './src/styles/theme';
-
-const theme = {
-  colors: {
-    primary: '#0052f3',
-  },
-  Header: {
-    centerContainerStyle: {
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-    backgroundColor: '#fff0',
-    containerStyle: {
-      borderBottom: 0
-    }
-  },
-  Card: {
-    containerStyle: {
-      padding: 0,
-      border: 0,
-      borderRadius: 8
-    },
-  },
-  Text: {
-    h4Style: {
-      fontSize: 18
-    }
-  },
-};
 
 const Drawer = createDrawerNavigator();
 
@@ -44,7 +15,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeReducerContext.Provider value={{ ThemeState, dispatch }}>
-        <ThemeProvider theme={theme} useDark={ThemeState.themeMode === 'dark' ? true : false}>
+        <ThemeProvider theme={ThemeState.theme} useDark={ThemeState.mode === 'dark' ? true : false}>
           <NavigationContainer>
             <Drawer.Navigator initialRouteName="Wallet" drawerContent={DrawerContent}>
               <Drawer.Screen name="Wallet" component={Wallet} />
