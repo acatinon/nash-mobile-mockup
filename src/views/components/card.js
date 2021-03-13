@@ -1,15 +1,17 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card as ElementsCard, Text, withTheme } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import { padding } from '../../styles/theme';
 import createStyles from '../../styles/base';
 
-export default function CustCard(props) {
+const Card = (props) => {
+  const { theme, updateTheme, replaceTheme } = props;
+
   return (
-    <Card containerStyle={{ backgroundColor: props.backgroundColor }}>
+    <ElementsCard containerStyle={{ backgroundColor: props.backgroundColor }}>
       <LinearGradient
-        colors={['#fff4', '#fff0']}
+        colors={[theme.colors.cardGradientA, theme.colors.cardGradientB]}
         start={{x:0.1, y:0}}>
         {props.renderBackground && 
         <View style={styles.fullSizeStacked}>
@@ -20,7 +22,7 @@ export default function CustCard(props) {
           {props.children}
         </View>
       </LinearGradient>
-    </Card>
+    </ElementsCard>
   );
 };
 
@@ -33,3 +35,5 @@ const styles = createStyles({
     marginVertical: padding.sm,
   }
 });
+
+export default withTheme(Card);

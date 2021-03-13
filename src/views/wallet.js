@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, FlatList, ScrollView } from 'react-native';
-import { Header, Card, Text, Button, Icon, withTheme } from 'react-native-elements';
+import { Header, Card as ElementsCard, Text, Button, Icon, withTheme } from 'react-native-elements';
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
-import CardCust from './components/card';
+import Card from './components/card';
 import Title from './components/title';
 import IconButton from './components/icon_button';
 import MarginView from './components/margin_view';
@@ -21,7 +21,7 @@ const CoinItem = withTheme((props) => {
   const { item, theme, updateTheme, replaceTheme } = props;
 
   return (
-    <CardCust backgroundColor={colors[item.symbol.toLowerCase()]}>
+    <Card backgroundColor={colors[item.symbol.toLowerCase()]}>
       <View style={[styles.stacked]}>
         <Text style={[styles.coinItem, { fontSize: fonts.md, fontWeight: 'bold' }]}>{item.name}</Text>
         <Text style={[styles.coinItem, { fontSize: fonts.md, opacity: 0.7 }]}>${item.price}</Text>
@@ -39,10 +39,10 @@ const CoinItem = withTheme((props) => {
         contentInset={{
           bottom: -BASE_SIZE * 0.21, right: -BASE_SIZE * 0.21, left: -BASE_SIZE * 0.21,
         }}
-        svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: theme.colors.white, opacity: 0.5 }}
+        svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: colors.white, opacity: 0.5 }}
       >
       </AreaChart>
-    </CardCust>
+    </Card>
   )
 });
 
@@ -64,9 +64,9 @@ const Wallet = (props) => {
         <Text h4>Wallet</Text>
         <Icon type="font-awesome-5" name="user-circle" color={theme.colors.black} />
       </Header>
-      <CardCust renderBackground={renderWalletBackground}>
+      <Card renderBackground={renderWalletBackground}>
         <View style={[styles.stacked, { alignItems: 'center' }]}>
-          <Card.FeaturedTitle style={styles.jumbo}>${wallet.amount}</Card.FeaturedTitle>
+          <ElementsCard.FeaturedTitle style={styles.jumbo}>${wallet.amount}</ElementsCard.FeaturedTitle>
           <Pill>
             <Icon type="font-awesome-5" name='arrow-up' color={theme.colors.primary} size={14} />
             <Text> </Text>
@@ -84,10 +84,10 @@ const Wallet = (props) => {
           contentInset={{
             bottom: -BASE_SIZE * 0.21, right: -BASE_SIZE * 0.21, left: -BASE_SIZE * 0.21,
           }}
-          svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: theme.colors.white, opacity: 0.5 }}
+          svg={{ strokeWidth: BASE_SIZE * 0.1875, stroke: colors.white, opacity: 0.5 }}
         >
         </AreaChart>
-      </CardCust>
+      </Card>
       <MarginView style={styles.actions}>
         <IconButton title="Deposit" name='arrow-down' iconBackgoundColor={theme.colors.primary} />
         <IconButton title="Send" name='arrow-up' iconBackgoundColor={theme.colors.primary} />
@@ -106,6 +106,7 @@ const Wallet = (props) => {
 
 const styles = createStyles({
   jumbo: {
+    color: colors.white,
     fontSize: fonts.xl,
     fontFamily: fonts.bold,
     textAlign: 'center',
@@ -123,7 +124,7 @@ const styles = createStyles({
     margin: padding.sm
   },
   coinItem: {
-    color: '#fff',
+    color: colors.white,
     marginHorizontal: padding.sm,
   },
   coinWallet: {

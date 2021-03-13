@@ -11,7 +11,8 @@ const lightColors = {
     grey4: '#bdc6cf',
     grey5: '#e1e8ee',
 
-    cardGradient: ['#fff4', '#fff0'],
+    cardGradientA: '#fff4',
+    cardGradientB: '#fff0',
   }
 };
 
@@ -26,7 +27,8 @@ const darkcolors = {
     grey1: '#bdc6cf',
     grey0: '#e1e8ee',
 
-    cardGradient: ['08080844', '08080800'],
+    cardGradientA: '#0000',
+    cardGradientB: '#0004',
   }
 };
 
